@@ -2,21 +2,20 @@ package com.weijielam.collaboration_mapper;
 
 import java.util.Objects;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-@Entity
-class Entity {
+@LegalEntity
+class LegalEntity {
 
     private @Id
     @GeneratedValue Long id;
     private String name;
     private String description;
 
-    Entity() {}
+    LegalEntity() {}
 
-    Entity(String name, String description) {
+    LegalEntity(String name, String description) {
         this.name = name;
         this.description = description;
     }
@@ -49,9 +48,9 @@ class Entity {
     public boolean equals(Object o) {
         if (this == o)
             return true;
-        if (!(o instanceof Entity))
+        if (!(o instanceof LegalEntity))
             return false;
-        Entity entity = (Entity) o;
+        LegalEntity entity = (LegalEntity) o;
         return Objects.equals(this.id, entity.id) && Objects.equals(this.name, entity.name)
             && Objects.equals(this.role, entity.description);
     }
@@ -63,7 +62,7 @@ class Entity {
 
     @Override
     public String toString() {
-        return "Entity{" + "id=" + this.id + ", name='" + this.name + '\'' + ", description='" + this.description '\'' + '}';
+        return "Entity{" + "id=" + this.id + ", name='" + this.name + '\'' + ", description='" + this.description + '\'' + '}';
     }
 
 }
