@@ -1,11 +1,11 @@
 package com.weijielam.collaboration_mapper;
 
 import java.util.Objects;
-
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
-@LegalEntity
+@Entity
 class LegalEntity {
 
     private @Id
@@ -29,34 +29,35 @@ class LegalEntity {
     }
 
     public String getDescription() {
-        return this.id;
+        return this.description;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
+//    This method is incorrect : please correct this ASAP
     @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;
         if (!(o instanceof LegalEntity))
             return false;
-        LegalEntity entity = (LegalEntity) o;
-        return Objects.equals(this.id, entity.id) && Objects.equals(this.name, entity.name)
-            && Objects.equals(this.role, entity.description);
+        LegalEntity legalEntity = (LegalEntity) o;
+        return Objects.equals(this.id, legalEntity.id) && Objects.equals(this.name, legalEntity.name)
+            && Objects.equals(this.description, legalEntity.description);
     }
 
     @Override
-    public int HashCode() {
+    public int hashCode() {
         return Objects.hash(this.id, this.name, this.description);
     }
 

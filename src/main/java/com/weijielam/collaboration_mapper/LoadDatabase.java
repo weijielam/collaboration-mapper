@@ -12,10 +12,10 @@ class LoadDatabase {
     private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
     @Bean
-    CommandLine Runner initDatabase(EntityRepository repository) {
+    CommandLineRunner initDatabase(LegalEntityRepository repository) {
         return args -> {
-            log.info("Preloading " + repository.save(new Entity("Kojima Productions","Game Studio")));
-            log.info("Preloading " + repository.save(new Entity("ACRONYM","Fashion Brand")));
-        }
+            log.info("Preloading " + repository.save(new LegalEntity("Kojima Productions","Game Studio")));
+            log.info("Preloading " + repository.save(new LegalEntity("ACRONYM","Fashion Brand")));
+        };
     }
 }
