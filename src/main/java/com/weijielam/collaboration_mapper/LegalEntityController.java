@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.hateoas.EntityModel;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 @RestController
 class LegalEntityController {
@@ -40,6 +42,17 @@ class LegalEntityController {
         return repository.findById(id)
                 .orElseThrow(() -> new LegalEntityNotFoundException(id));
     }
+
+//    @GetMapping("/entities/{id}")
+//    EntityModel<LegalEntity> one(@PathVariable Long id) {
+//
+//        LegalEntity employee = repository.findById(id) //
+//                .orElseThrow(() -> new LegalEntityNotFoundException(id));
+//
+//        return EntityModel.of(employee, //
+//                linkTo(methodOn(LegalEntityController.class).one(id)).withSelfRel(),
+//                linkTo(methodOn(LegalEntityController.class).all()).withRel("entities"));
+//    }
 
     @PutMapping("/entities/{id}")
     LegalEntity replaceLegalEntity(@RequestBody LegalEntity newLegalEntity, @PathVariable Long id) {
